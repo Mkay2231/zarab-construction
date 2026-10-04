@@ -15,6 +15,25 @@
   <body>
     <noscript>This website requires JavaScript. Please enable it to view Zarab Construction Company Ltd.</noscript>
     <div id="root"></div>
+    <!--
+      Netlify Forms detection: Netlify scans this static markup at deploy time to
+      register the "enquiry" form. The visible form is rendered by React
+      (src/components/Forms/ContactForm.jsx) and posts the same field names.
+      Harmless on other hosts.
+    -->
+    <form name="enquiry" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="text" name="bot-field" />
+      <input type="text" name="fullName" />
+      <input type="email" name="email" />
+      <input type="tel" name="phone" />
+      <input type="text" name="company" />
+      <input type="text" name="projectType" />
+      <input type="text" name="location" />
+      <textarea name="details"></textarea>
+      <input type="text" name="method" />
+      <input type="text" name="consent" />
+      <input type="text" name="submittedAt" />
+    </form>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

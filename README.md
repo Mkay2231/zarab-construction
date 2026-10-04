@@ -67,10 +67,15 @@ public/
 
 ### Contact form
 
-The form validates in the browser and shows loading / success / failure states. **It is not connected to a backend yet.**
+The form validates in the browser and shows loading / success / failure states. Where it sends enquiries is chosen at build time with `VITE_CONTACT_PROVIDER` (see `.env.example`):
 
-- With no configuration it runs a **mock submission** — nothing is sent anywhere.
-- To send real enquiries, create `.env` (see `.env.example`) and set `VITE_CONTACT_ENDPOINT` to a URL that accepts a JSON `POST` (form service, serverless function or PHP mail script), then rebuild.
+| Provider | Used for | How it works |
+| --- | --- | --- |
+| `netlify` | Netlify hosting (set in `netlify.toml`) | Netlify Forms stores each enquiry (form name `enquiry`) and can email it — Netlify dashboard → Forms → Form notifications. |
+| `endpoint` | Namecheap / GoDaddy cPanel hosting | POSTs JSON to `VITE_CONTACT_ENDPOINT`, e.g. `/contact.php` from [`deploy/cpanel/`](deploy/cpanel/README.md). |
+| *(empty)* | Local development | Mock submission — nothing is sent anywhere. |
+
+- A hidden honeypot field (`bot-field`) filters basic spam on both real providers.
 - Preview the failure state locally with `/contact?simulate=error`.
 
 ## Deployment
@@ -78,8 +83,8 @@ The form validates in the browser and shows loading / success / failure states. 
 `npm run build` produces a standard static site in `dist/` that works on any host. Because routes like `/about` are handled client-side, the host must serve `index.html` for unknown paths — rewrite files for common hosts are included:
 
 - **Vercel** — import the repo; `vercel.json` is included. Build command `npm run build`, output `dist`.
-- **Netlify** — import the repo; `public/_redirects` is copied into `dist/`. Build command `npm run build`, publish directory `dist`.
-- **Traditional hosting (Namecheap / GoDaddy cPanel, Apache)** — run `npm run build` locally and upload the *contents* of `dist/` (including the hidden `.htaccess` file) to `public_html/`. Then point the domain at the hosting account. If the host uses Nginx instead of Apache, add `try_files $uri /index.html;`.
+- **Netlify** — import the repo; `netlify.toml` sets the build, rewrites, headers and the Netlify Forms contact provider.
+- **Traditional hosting (Namecheap / GoDaddy cPanel, Apache)** — follow [`deploy/cpanel/README.md`](deploy/cpanel/README.md): build with the `endpoint` provider, then upload the *contents* of `dist/` (including the hidden `.htaccess` file) plus `contact.php` to `public_html/`. If the host uses Nginx instead of Apache, add `try_files $uri /index.html;`.
 
 ## Accessibility & motion
 

@@ -40,6 +40,7 @@ export default function ContactForm() {
   const [showSummary, setShowSummary] = useState(false);
   const summaryRef = useRef(null);
   const panelRef = useRef(null);
+  const honeypotRef = useRef(null); // spam trap: real users never see or fill it
 
   const set = (key) => (e) => {
     const next = { ...values, [key]: e?.target ? e.target.value : e };
@@ -64,7 +65,11 @@ export default function ContactForm() {
     setShowSummary(false);
     setStatus('loading');
     try {
-      await submitEnquiry({ ...values, submittedAt: new Date().toISOString() });
+      await submitEnquiry({
+        ...values,
+        submittedAt: new Date().toISOString(),
+        'bot-field': honeypotRef.current?.value ?? '',
+      });
       setStatus('success');
     } catch {
       setStatus('error');
@@ -150,6 +155,12 @@ export default function ContactForm() {
             </AnimatePresence>
 
             <p className="t-caption muted form-note">Fields marked Required must be completed.</p>
+
+            {/* Honeypot (Netlify Forms + cPanel script discard submissions where this is filled). */}
+            <div className="visually-hidden" aria-hidden="true">
+              <label htmlFor="bot-field">Leave this field empty</label>
+              <input ref={honeypotRef} id="bot-field" name="bot-field" type="text" tabIndex={-1} autoComplete="off" />
+            </div>
 
             <div className="form-grid">
               <TextField id="fullName" label="Full Name" required placeholder="Enter your full name" autoComplete="name"

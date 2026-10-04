@@ -4,6 +4,8 @@
 
 [build.environment]
   NODE_VERSION = "22"
+  # Contact form → Netlify Forms (form "enquiry"). Change when moving hosts.
+  VITE_CONTACT_PROVIDER = "netlify"
 
 # Client-side routes (/about, /services, ...) all serve the React app.
 [[redirects]]
