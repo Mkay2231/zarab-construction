@@ -32,7 +32,13 @@
 .service-item {
   display: grid; grid-template-columns: auto 1fr auto; gap: var(--space-12) var(--space-16); align-items: center;
   padding: var(--space-24) 0 var(--space-32); border-top: 1px solid var(--color-text);
-  transition: background-color var(--dur-base) var(--ease-out), padding var(--dur-base) var(--ease-out);
+  position: relative; isolation: isolate;
+}
+/* Hover fill: a bleed layer faded with opacity, so the grid never reflows. */
+.service-item::before {
+  content: ''; position: absolute; inset: 0; z-index: -1;
+  background: var(--color-background); opacity: 0;
+  transition: opacity var(--dur-base) var(--ease-out);
 }
 .service-item__num { grid-column: 1; }
 .service-item__icon { grid-column: 3; justify-self: end; }
@@ -50,5 +56,6 @@
   .service-item__num, .service-item__icon, .service-item__title, .service-item__desc, .service-item__arrow { grid-column: auto; }
   .service-item__icon { justify-self: start; }
   .service-item__title { font-size: var(--fs-h2); font-weight: 500; }
-  .service-item:hover { background: var(--color-background); padding-inline: var(--space-24); }
+  .service-item::before { inset: 0 calc(-1 * var(--space-24)); }
+  .service-item:hover::before { opacity: 1; }
 }
