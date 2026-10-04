@@ -1,0 +1,80 @@
+/* Zarab design tokens — mirror the Figma variables (00 — Foundation). */
+:root {
+  /* Brand */
+  --color-green: #176B3A;
+  --color-green-hover: #125A30;
+  --color-green-pressed: #0D4725;
+  --color-green-tint: rgba(23, 107, 58, 0.06);
+  --color-green-tint-strong: rgba(23, 107, 58, 0.12);
+  --color-yellow: #F4C430;
+  --color-yellow-hover: #E6B520;
+  --color-yellow-pressed: #D4A514;
+
+  /* Neutral */
+  --color-white: #FFFFFF;
+  --color-background: #F7F8F5;
+  --color-surface: #E9ECE5;
+  --color-text: #111512;
+  --color-text-secondary: #5F665F;
+  --color-text-disabled: #9AA199;
+  --color-border: #E5E8E3;
+
+  /* On dark (green / ink) */
+  --color-on-dark-text-secondary: rgba(255, 255, 255, 0.8);
+  --color-on-dark-text-disabled: rgba(255, 255, 255, 0.42);
+  --color-on-dark-border: rgba(255, 255, 255, 0.18);
+  --color-on-dark-border-strong: rgba(255, 255, 255, 0.6);
+  --color-on-dark-hover: rgba(255, 255, 255, 0.08);
+  --color-on-dark-pressed: rgba(255, 255, 255, 0.16);
+
+  /* Feedback */
+  --color-error: #B42318;
+  --color-error-tint: rgba(180, 35, 24, 0.06);
+
+  /* Typography */
+  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  --fs-display-l: clamp(2.5rem, 1.55rem + 3.9vw, 4.5rem);
+  --fs-display-m: clamp(2.25rem, 1.7rem + 2.2vw, 3.5rem);
+  --fs-h1: clamp(2rem, 1.55rem + 1.8vw, 2.75rem);
+  --fs-h2: clamp(1.625rem, 1.45rem + 0.75vw, 2rem);
+  --fs-h3: clamp(1.25rem, 1.18rem + 0.3vw, 1.375rem);
+  --fs-body-l: clamp(1.0625rem, 1.03rem + 0.15vw, 1.1875rem);
+  --fs-body-m: 1rem;
+  --fs-body-s: 0.875rem;
+  --fs-label-l: 0.9375rem;
+  --fs-label: 0.75rem;
+  --fs-caption: 0.8125rem;
+
+  /* Spacing scale (Figma Spacing/*) */
+  --space-4: 4px;  --space-8: 8px;  --space-12: 12px; --space-16: 16px;
+  --space-20: 20px; --space-24: 24px; --space-32: 32px; --space-40: 40px;
+  --space-48: 48px; --space-64: 64px; --space-80: 80px; --space-96: 96px;
+  --space-120: 120px;
+
+  /* Layout */
+  --container: 1280px;
+  --gutter: 20px;              /* page margin: 20 mobile / 40 tablet / 80 desktop */
+  --grid-gap: 16px;
+  --section-pad: var(--space-64);
+  --nav-h: 64px;
+  --inav-h: 52px;
+  --radius-s: 2px;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 150ms;
+  --dur-base: 250ms;
+}
+
+@media (min-width: 768px) {
+  :root { --gutter: 40px; --grid-gap: 24px; --section-pad: var(--space-96); }
+}
+
+@media (min-width: 1024px) {
+  :root { --nav-h: 80px; --inav-h: 56px; }
+}
+
+@media (min-width: 1360px) {
+  :root { --gutter: 80px; --section-pad: var(--space-120); }
+}

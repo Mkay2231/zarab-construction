@@ -1,0 +1,27 @@
+/* CSS-driven motion (micro-interactions). Framer Motion handles reveals/transitions
+   and respects prefers-reduced-motion via <MotionConfig reducedMotion="user">. */
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Shared image hover zoom used by cards (1 → 1.03) */
+.zoom-media { overflow: hidden; }
+.zoom-media > * { transition: transform 700ms var(--ease-out); will-change: transform; }
+.zoom-host:hover .zoom-media > *,
+.zoom-host:focus-within .zoom-media > * { transform: scale(1.03); }
+
+/* Arrow nudge for links/buttons */
+.nudge-arrow { transition: transform var(--dur-base) var(--ease-out); }
+.nudge-host:hover .nudge-arrow,
+.nudge-host:focus-visible .nudge-arrow { transform: translateX(4px); }
+.nudge-host:hover .nudge-arrow--up,
+.nudge-host:focus-visible .nudge-arrow--up { transform: translate(3px, -3px); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .zoom-host:hover .zoom-media > * { transform: none; }
+}

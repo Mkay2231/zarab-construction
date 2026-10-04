@@ -1,0 +1,40 @@
+/* Secondary navigation: sticks directly under the sticky global header. */
+.inav {
+  position: sticky; top: var(--nav-h); z-index: 40;
+  height: var(--inav-h);
+  background: var(--color-white);
+  border-bottom: 1px solid var(--color-border);
+}
+.inav__scroller {
+  height: 100%; overflow-x: auto; overflow-y: hidden;
+  scrollbar-width: none; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain;
+}
+.inav__scroller::-webkit-scrollbar { display: none; }
+.inav__list {
+  height: 100%; display: flex; align-items: stretch; gap: 0;
+  white-space: nowrap; width: max-content; min-width: 100%;
+  padding-inline: var(--gutter) calc(var(--gutter) + 16px);
+}
+.inav__link {
+  position: relative; display: inline-flex; align-items: center; height: 100%;
+  padding-inline: var(--space-12);
+  font-size: var(--fs-body-s); color: var(--color-text-secondary);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+.inav__list > li:first-child .inav__link { padding-left: 0; }
+.inav__link:hover { color: var(--color-text); }
+.inav__link.is-active { color: var(--color-green); font-weight: 500; }
+.inav__indicator { position: absolute; left: var(--space-12); right: var(--space-12); bottom: 0; height: 2px; background: var(--color-yellow); }
+.inav__list > li:first-child .inav__indicator { left: 0; }
+.inav__fade {
+  position: absolute; top: 0; right: 0; bottom: 1px; width: 32px; pointer-events: none;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), var(--color-white));
+}
+
+@media (min-width: 1024px) {
+  .inav__list {
+    gap: var(--space-16); padding-inline: 0; min-width: 0;
+    width: min(100% - (var(--gutter) * 2), var(--container)); margin-inline: auto;
+  }
+  .inav__fade { display: none; }
+}
