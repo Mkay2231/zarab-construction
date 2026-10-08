@@ -21,7 +21,7 @@ export default function Team() {
     { anchor: 'team-overview', label: 'Overview', section: 'team-overview' },
     { anchor: 'leadership', label: 'Leadership', section: 'leadership' },
     {
-      anchor: 'engineering-team', label: 'Engineering Team', section: 'engineering-team',
+      anchor: 'engineering-team', label: 'Staff Directory', section: 'engineering-team',
       onSelect: () => setFilter('All'),
       isActive: (s) => s === 'engineering-team' && filter !== 'Management',
     },
@@ -70,7 +70,7 @@ export default function Team() {
             </Stagger>
           </div>
           <p className="placeholder-note" style={{ marginTop: 'var(--space-48)' }}>
-            Profiles are structural placeholders. Names, titles and qualifications appear only once approved by Zarab.
+            Names, roles and qualifications are transcribed from the company profile. Experience figures are recorded as listed in that document, whose date is not specified. Portraits are still to be supplied.
           </p>
         </div>
       </section>

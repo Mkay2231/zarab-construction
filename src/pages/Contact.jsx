@@ -81,10 +81,11 @@ export default function Contact() {
       {/* 06.2 Contact Information */}
       <section id="contact-information" className="section section--white" aria-labelledby="info-title">
         <div className="container">
-          <SectionHead id="info-title" label="Contact information" title="We're ready to hear from you." note="Details shown are placeholders until approved by Zarab Construction Company Ltd." />
+          <SectionHead id="info-title" label="Contact information" title="We're ready to hear from you." note="Email addresses are supplied in the company profile. Phone, office location and opening hours are still to be confirmed." />
           <Stagger className="contact-info">
             <InfoItem icon="phone" label="Phone" value={company.phone} secondary={company.phoneSecondary} action="Call Us" href={tel} />
             <InfoItem icon="mail" label="Email" value={company.email} action="Send Email" href={mailto} />
+            <InfoItem icon="mail" label="Alternative Email" value={company.emailSecondary} action="Send Email" href={`mailto:${company.emailSecondary}`} />
             <InfoItem icon="location" label="Office" value={company.address} secondary={company.region} action="Get Directions" href={directions} />
             <InfoItem icon="clock" label="Business Hours" value={company.hours} secondary={company.weekendHours} />
           </Stagger>
@@ -114,6 +115,7 @@ export default function Contact() {
               <ul className="method-list">
                 <Method icon="phone" label="Phone" value={company.phone} href={tel} action="Call" />
                 <Method icon="mail" label="Email" value={company.email} href={mailto} action="Email" />
+                <Method icon="mail" label="Alternative Email" value={company.emailSecondary} href={`mailto:${company.emailSecondary}`} action="Email" />
               </ul>
             </Reveal>
           </div>

@@ -12,6 +12,7 @@ import { ServiceItem } from '../components/ServiceCard/ServiceCard';
 import Timeline from '../components/Common/Timeline';
 import { scrollToSection } from '../hooks/useSections';
 import { services, processSteps } from '../data/services';
+import { stats as facts, company } from '../data/company';
 import './pages.css';
 
 const navItems = [
@@ -23,12 +24,7 @@ const navItems = [
   { anchor: 'our-approach', label: 'Our Approach', section: 'our-approach' },
 ];
 
-const facts = [
-  { value: '[XX]+', label: 'Projects' },
-  { value: '[XX]+', label: 'Years Experience' },
-  { value: '[XX]', label: 'Engineers & Professionals' },
-  { value: '[XX]', label: 'Locations' },
-];
+
 
 function Caps({ title = 'Capabilities', items, theme }) {
   return (
@@ -75,7 +71,7 @@ export default function Services() {
       {/* 03.2 Services Overview */}
       <section id="services-overview" className="section section--white" aria-labelledby="overview-title">
         <div className="container">
-          <SectionHead id="overview-title" label="What we do" title="Our core areas of expertise." aside={<span className="placeholder">[Approved company capabilities overview will be inserted here.]</span>} />
+          <SectionHead id="overview-title" label="What we do" title="Our core areas of expertise." aside="Civil engineering, buildings, roads, bridges, water resources, architecture, electrical and mechanical engineering." />
           <Stagger className="service-list" as="div">
             {services.map((s) => (
               <RevealItem key={s.id}>
@@ -134,7 +130,7 @@ export default function Services() {
             <div className="panel">
               <div className="panel__head">
                 <p className="t-label accent-yellow">Areas of work</p>
-                <p className="t-caption muted">Content slots — to be confirmed by Zarab</p>
+                <p className="t-caption muted">Scope listed in our company profile</p>
               </div>
               <div className="panel__grid">
                 <ul className="caps">{civil.areas.slice(0, 2).map((a, i) => <li key={`a${i}`}><span className="caps__marker" aria-hidden="true" /><span className="placeholder">{a}</span></li>)}</ul>
@@ -164,14 +160,14 @@ export default function Services() {
               </RevealItem>
             ))}
           </Stagger>
-          <p className="placeholder-note" style={{ marginTop: 'var(--space-24)' }}>Structural content slots only — not presented as a certified process.</p>
+          <p className="placeholder-note" style={{ marginTop: 'var(--space-24)' }}>Services summarized from the company profile.</p>
         </div>
       </section>
 
       {/* 03.7 How We Work */}
       <section id="our-approach" className="section section--bg" aria-labelledby="approach-title">
         <div className="container">
-          <SectionHead id="approach-title" label="Our approach" title="From planning to delivery." />
+          <SectionHead id="approach-title" label="Our approach" title="Quality throughout the work." note="Practices described in our quality assurance policy." />
           <Timeline items={processSteps.map((s) => ({ ...s, year: null }))} variant="process" />
         </div>
       </section>
@@ -179,16 +175,16 @@ export default function Services() {
       {/* 03.8 Capabilities / Facts */}
       <section className="section section--white" aria-labelledby="capabilities-title">
         <div className="container">
-          <SectionHead id="capabilities-title" label="At a glance" title="Built around capability." note="[XX] values are placeholders. Replace only with verified figures approved by Zarab." />
+          <SectionHead id="capabilities-title" label="At a glance" title="Built around capability." note="Registration details and staff listings from the supplied company profile." />
           <Stagger className="stats-grid">
             {facts.map((s) => <RevealItem key={s.label}><StatItem value={s.value} label={s.label} /></RevealItem>)}
           </Stagger>
           <Reveal className="credentials">
             <div className="stack" style={{ '--stack': 'var(--space-8)' }}>
               <p className="t-label green">Credentials</p>
-              <p className="t-body-l placeholder">[Certifications / Accreditations / Professional Memberships]</p>
+              <p className="t-body-l placeholder">{company.legalName} — {company.registrationNumber}</p>
             </div>
-            <p className="t-caption muted">Placeholder area only. Show verified, current credentials supplied by Zarab — no logos until approved.</p>
+            <p className="t-caption muted">Incorporated on {company.incorporated}. Corporate Affairs Commission certificate supplied in the company profile.</p>
           </Reveal>
         </div>
       </section>
