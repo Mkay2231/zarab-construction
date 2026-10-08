@@ -12,7 +12,7 @@ export const services = [
     id: 'bridge-construction', number: '02', title: 'Bridge Construction', icon: 'bridge',
     short: 'Bridge design and construction as part of road networks and city infrastructure.',
     description: 'Zarab provides bridge design and construction within its civil engineering and infrastructure scope.',
-    scope: 'The company profile lists roads and bridges alongside other city infrastructure, flood control, underwater services and erosion control.',
+    scope: 'We design and construct roads, bridges and city infrastructure, with services in flood control, underwater works and erosion control.',
     capabilities: ['Bridge design', 'Bridge construction', 'Related civil infrastructure'],
     imageLabel: '[BRIDGE CONSTRUCTION IMAGE]',
   },
@@ -30,7 +30,7 @@ export const services = [
     blocks: [
       { title: 'Water Infrastructure', text: 'Design and construction of dams and water-retaining structures, with water resources, treatment, storage, pumping and distribution services.' },
       { title: 'Electrical Engineering', text: 'Design and construction of power transmission lines, substations, hydroelectric power stations, pump stations and rural electrification infrastructure.' },
-      { title: 'Mechanical Engineering', text: 'Steel tank fabrication, maintenance works, and onshore and offshore services. The company profile also lists oil pipelines within its engineering scope.' },
+      { title: 'Mechanical Engineering', text: 'Steel tank fabrication, maintenance works, and onshore and offshore services. Our engineering scope also includes oil pipelines.' },
     ],
     imageLabel: '[INFRASTRUCTURE PROJECT IMAGE]',
   },

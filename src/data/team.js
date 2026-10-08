@@ -4,7 +4,7 @@ export const teamCategories = ['All', 'Engineering', 'Project Delivery', 'Manage
 
 const member = (id, name, role, department, qualification, experienceInProfile) => ({
   id, name, role, department, qualification, experienceInProfile,
-  bio: qualification ? role + '. Qualifications listed in the company profile: ' + qualification + '.' : 'Managing Director, named in the company’s quality, health, environmental and community responsibility policies.',
+  bio: qualification ? null : 'Leads Zarab’s commitment to quality, employee wellbeing, environmental protection and community responsibility.',
   photo: null, profileUrl: null, linkedin: null,
 });
 

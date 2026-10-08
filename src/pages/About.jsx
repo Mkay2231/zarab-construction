@@ -98,7 +98,7 @@ export default function About() {
             </Reveal>
             <div className="mv__meta">
               <span className={`t-label ${p.key === 'mission' ? 'accent-yellow' : 'green'}`}>{p.n}</span>
-              <span className="t-caption muted">From the {company.shortName} company profile</span>
+
             </div>
           </div>
         ))}
@@ -141,7 +141,7 @@ export default function About() {
         <div className="container">
           <div className="head-row">
             <SectionLabel as="h2" id="facts-title">At a glance</SectionLabel>
-            <p className="placeholder-note">Registration details and staff listings from the supplied company profile.</p>
+
           </div>
           <Stagger className="stats-grid">
             {aboutFacts.map((s) => <RevealItem key={s.label}><StatItem value={s.value} label={s.label} /></RevealItem>)}

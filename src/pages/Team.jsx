@@ -69,9 +69,7 @@ export default function Team() {
               {supporting.map((m) => <RevealItem key={m.id}><LeadershipCard member={m} /></RevealItem>)}
             </Stagger>
           </div>
-          <p className="placeholder-note" style={{ marginTop: 'var(--space-48)' }}>
-            Names, roles and qualifications are transcribed from the company profile. Experience figures are recorded as listed in that document, whose date is not specified. Portraits are still to be supplied.
-          </p>
+
         </div>
       </section>
 

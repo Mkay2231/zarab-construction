@@ -20,7 +20,7 @@ export const principles = [
   { number: '01', title: 'Quality', text: 'Our quality policy places workmanship, timely completion and cost efficiency at the centre of delivery, supported by systematic procedures and regular review.' },
   { number: '02', title: 'Safety', text: 'We prioritize the health and wellbeing of workers through hazard identification, appropriate protective equipment, training and welfare provisions.' },
   { number: '03', title: 'Client Support', text: 'A dedicated client support team attends to client needs, while our quality approach addresses the requirements of each contract.' },
-  { number: '04', title: 'Professional Expertise', text: 'Our profile brings together civil engineers, quantity surveyors, builders, mechanical engineers, architects, estate surveyors and designers.' },
+  { number: '04', title: 'Professional Expertise', text: 'Our team brings together civil engineers, quantity surveyors, builders, mechanical engineers, architects, estate surveyors and designers.' },
 ];
 
 export const aboutFacts = stats;
