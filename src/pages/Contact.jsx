@@ -84,8 +84,7 @@ export default function Contact() {
           <SectionHead id="info-title" label="Contact information" title="We're ready to hear from you." note="Contact us by phone or email to discuss your project or arrange an office visit." />
           <Stagger className="contact-info">
             <InfoItem icon="phone" label="Phone" value={company.phone} secondary={company.phoneSecondary} action="Call Us" href={tel} />
-            <InfoItem icon="mail" label="Email" value={company.email} action="Send Email" href={mailto} />
-            <InfoItem icon="mail" label="Alternative Email" value={company.emailSecondary} action="Send Email" href={`mailto:${company.emailSecondary}`} />
+            <InfoItem icon="mail" label="Email" value={company.email} secondary={<a href={`mailto:${company.emailSecondary}`}>{company.emailSecondary}</a>} action="Send Email" href={mailto} />
             <InfoItem icon="location" label="Office" value={company.address} secondary={company.region} action="Get Directions" href={directions} />
             <InfoItem icon="clock" label="Business Hours" value={company.hours} secondary={company.weekendHours} />
           </Stagger>
