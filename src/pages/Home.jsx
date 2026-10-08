@@ -124,7 +124,7 @@ export default function Home() {
       {/* 01.5 Why Zarab */}
       <section className="section section--ink on-dark" aria-labelledby="why-title">
         <div className="container">
-          <SectionHead id="why-title" theme="dark" label="Why Zarab" title="Built around quality, responsibility and execution." note="Our company profile sets out commitments to quality, worker wellbeing, client support and professional expertise." />
+          <SectionHead id="why-title" theme="dark" label="Why Zarab" title="Built around quality, responsibility and execution." note="We are committed to quality, worker wellbeing, client support and professional expertise." />
           <Stagger as="ol" className="principles">
             {principles.map((p) => (
               <RevealItem as="li" key={p.number} className="principle">
@@ -143,7 +143,7 @@ export default function Home() {
           <Stagger className="stats-grid">
             {stats.map((s) => <RevealItem key={s.label}><StatItem value={s.value} label={s.label} /></RevealItem>)}
           </Stagger>
-          <p className="placeholder-note stats-note">Company registration and staff listings are drawn from the supplied profile; staff counts describe that document.</p>
+
         </div>
       </section>
 

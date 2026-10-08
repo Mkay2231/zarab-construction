@@ -130,7 +130,7 @@ export default function Services() {
             <div className="panel">
               <div className="panel__head">
                 <p className="t-label accent-yellow">Areas of work</p>
-                <p className="t-caption muted">Scope listed in our company profile</p>
+
               </div>
               <div className="panel__grid">
                 <ul className="caps">{civil.areas.slice(0, 2).map((a, i) => <li key={`a${i}`}><span className="caps__marker" aria-hidden="true" /><span className="placeholder">{a}</span></li>)}</ul>
@@ -160,14 +160,14 @@ export default function Services() {
               </RevealItem>
             ))}
           </Stagger>
-          <p className="placeholder-note" style={{ marginTop: 'var(--space-24)' }}>Services summarized from the company profile.</p>
+
         </div>
       </section>
 
       {/* 03.7 How We Work */}
       <section id="our-approach" className="section section--bg" aria-labelledby="approach-title">
         <div className="container">
-          <SectionHead id="approach-title" label="Our approach" title="Quality throughout the work." note="Practices described in our quality assurance policy." />
+          <SectionHead id="approach-title" label="Our approach" title="Quality throughout the work." note="Clear procedures, consistent standards and continuous improvement." />
           <Timeline items={processSteps.map((s) => ({ ...s, year: null }))} variant="process" />
         </div>
       </section>
@@ -175,7 +175,7 @@ export default function Services() {
       {/* 03.8 Capabilities / Facts */}
       <section className="section section--white" aria-labelledby="capabilities-title">
         <div className="container">
-          <SectionHead id="capabilities-title" label="At a glance" title="Built around capability." note="Registration details and staff listings from the supplied company profile." />
+          <SectionHead id="capabilities-title" label="At a glance" title="Built around capability." />
           <Stagger className="stats-grid">
             {facts.map((s) => <RevealItem key={s.label}><StatItem value={s.value} label={s.label} /></RevealItem>)}
           </Stagger>
@@ -184,7 +184,7 @@ export default function Services() {
               <p className="t-label green">Credentials</p>
               <p className="t-body-l placeholder">{company.legalName} — {company.registrationNumber}</p>
             </div>
-            <p className="t-caption muted">Incorporated on {company.incorporated}. Corporate Affairs Commission certificate supplied in the company profile.</p>
+            <p className="t-caption muted">Incorporated on {company.incorporated}. Registered with the Corporate Affairs Commission.</p>
           </Reveal>
         </div>
       </section>

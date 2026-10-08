@@ -32,8 +32,8 @@ export const isPlaceholder = (value) => !value || /^\[.*\]$/.test(String(value).
 export const stats = [
   { value: '2008', label: 'Year Incorporated' },
   { value: 'RC 756052', label: 'Company Registration' },
-  { value: '12', label: 'Technical Staff Listed in Profile' },
-  { value: '4', label: 'Administrative Staff Listed in Profile' },
+  { value: '12', label: 'Technical Staff' },
+  { value: '4', label: 'Administrative Staff' },
 ];
 
 export const navLinks = [

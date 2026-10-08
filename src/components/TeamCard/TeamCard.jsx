@@ -16,8 +16,9 @@ export function TeamCard({ member, showDepartment = true, showBio = true }) {
         {showDepartment && <p className="t-label green">{member.department ?? '[DEPARTMENT]'}</p>}
         <h3 className="t-h3 team-card__name">{member.name}</h3>
         <p className="t-body-s">{member.role}</p>
-        {showBio && <p className="t-body-s">{member.bio}</p>}
-        {showBio && member.experienceInProfile != null && <p className="t-caption muted">Experience listed in profile: {member.experienceInProfile} years</p>}
+        {showBio && member.bio && <p className="t-body-s">{member.bio}</p>}
+        {showBio && member.qualification && <p className="t-body-s"><span className="t-label muted">Qualification </span>{member.qualification}</p>}
+        {showBio && member.experienceInProfile != null && <p className="t-caption muted">Experience: {member.experienceInProfile} years</p>}
         {member.profileUrl && (
           <a href={member.profileUrl} className="team-card__link nudge-host">
             View Profile <Icon name="arrowRight" size={20} className="nudge-arrow" />
@@ -39,8 +40,8 @@ export function LeadershipCard({ member, primary = false }) {
         )}
         <h3 className={primary ? 't-display-m leader-card__name' : 't-h3 leader-card__name'}>{member.name}</h3>
         <p className={primary ? 't-body-l green' : 't-body-s green'}>{member.role}</p>
-        <p className={`placeholder ${primary ? 't-body-l' : 't-body-s'}`}>{member.bio}</p>
-        {member.experienceInProfile != null && <p className="t-caption muted">Experience listed in profile: {member.experienceInProfile} years</p>}
+        {member.bio && <p className={primary ? 't-body-l' : 't-body-s'}>{member.bio}</p>}
+        {member.experienceInProfile != null && <p className="t-caption muted">Experience: {member.experienceInProfile} years</p>}
         {member.qualification && <p className="t-body-s"><span className="t-label muted">Qualification </span>{member.qualification}</p>}
         {member.linkedin && (
           <a href={member.linkedin} className="leader-card__social nudge-host" target="_blank" rel="noopener noreferrer">
