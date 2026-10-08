@@ -12,14 +12,14 @@ import { HeroItem, Reveal, Stagger, RevealItem } from '../components/Common/Moti
 import { LeadershipCard } from '../components/TeamCard/TeamCard';
 import Timeline from '../components/Common/Timeline';
 import { company } from '../data/company';
-import { story, mission, vision, values, aboutFacts } from '../data/about';
+import { story, mission, objectives, values, aboutFacts } from '../data/about';
 import { leadership } from '../data/team';
 import './pages.css';
 
 const navItems = [
   { anchor: 'about-overview', label: 'Overview', section: 'about-overview' },
   { anchor: 'our-story', label: 'Our Story', section: 'our-story' },
-  { anchor: 'mission-vision', label: 'Mission & Vision', section: 'mission-vision' },
+  { anchor: 'mission-vision', label: 'Mission & Objectives', section: 'mission-vision' },
   { anchor: 'core-values', label: 'Values', section: 'core-values' },
   { anchor: 'leadership', label: 'Leadership', section: 'leadership' },
   { anchor: 'company-facts', label: 'Company Facts', section: 'company-facts' },
@@ -80,16 +80,16 @@ export default function About() {
       {/* 02.3 Our Story */}
       <section id="our-story" className="section section--bg" aria-labelledby="story-title">
         <div className="container">
-          <SectionHead id="story-title" label="Our story" title="From vision to infrastructure." note="Years and milestones are placeholders until confirmed by Zarab." />
+          <SectionHead id="story-title" label="Our story" title="From vision to infrastructure." note="Incorporated on 26 June 2008, as recorded in the supplied certificate." />
           <Timeline items={story} />
         </div>
       </section>
 
       {/* 02.4 Mission & Vision */}
-      <section id="mission-vision" className="mv" aria-label="Mission and vision">
+      <section id="mission-vision" className="mv" aria-label="Mission and objectives">
         {[
           { key: 'mission', label: 'Our mission', text: mission, n: '01' },
-          { key: 'vision', label: 'Our vision', text: vision, n: '02' },
+          { key: 'vision', label: 'Our objectives', text: objectives, n: '02' },
         ].map((p, i) => (
           <div key={p.key} className={`mv__panel mv__panel--${p.key} ${p.key === 'mission' ? 'on-dark' : ''}`}>
             <Reveal delay={i * 0.1} className="mv__statement">
@@ -98,7 +98,7 @@ export default function About() {
             </Reveal>
             <div className="mv__meta">
               <span className={`t-label ${p.key === 'mission' ? 'accent-yellow' : 'green'}`}>{p.n}</span>
-              <span className="t-caption muted">Statement to be supplied by {company.name}</span>
+              <span className="t-caption muted">From the {company.shortName} company profile</span>
             </div>
           </div>
         ))}
@@ -107,7 +107,7 @@ export default function About() {
       {/* 02.5 Core Values */}
       <section id="core-values" className="section section--bg" aria-labelledby="values-title">
         <div className="container">
-          <SectionHead id="values-title" label="What guides us" title="Principles behind every project." note="Provisional value categories — replace with Zarab's official values when supplied." />
+          <SectionHead id="values-title" label="What guides us" title="Principles behind every project." note="Our commitments to quality, people, communities and the environment." />
           <Stagger className="values" as="ul">
             {values.map((v) => (
               <RevealItem as="li" key={v.number} className="value">
@@ -141,7 +141,7 @@ export default function About() {
         <div className="container">
           <div className="head-row">
             <SectionLabel as="h2" id="facts-title">At a glance</SectionLabel>
-            <p className="placeholder-note">[XX] values are placeholders. Replace only with figures verified and approved by {company.name}</p>
+            <p className="placeholder-note">Registration details and staff listings from the supplied company profile.</p>
           </div>
           <Stagger className="stats-grid">
             {aboutFacts.map((s) => <RevealItem key={s.label}><StatItem value={s.value} label={s.label} /></RevealItem>)}

@@ -28,7 +28,8 @@ export default function Footer() {
               <h2 className="t-label muted site-footer__title">Contact</h2>
               <ul className="site-footer__list">
                 <li>{company.phone}</li>
-                <li>{company.email}</li>
+                <li><a href={`mailto:${company.email}`} className="site-footer__link">{company.email}</a></li>
+                <li><a href={`mailto:${company.emailSecondary}`} className="site-footer__link">{company.emailSecondary}</a></li>
                 <li>{company.address}</li>
               </ul>
             </div>
@@ -49,7 +50,7 @@ export default function Footer() {
           </div>
         </Reveal>
         <div className="site-footer__bottom">
-          <p className="t-caption muted">© [Year] {company.name} All rights reserved.</p>
+          <p className="t-caption muted">© {new Date().getFullYear()} {company.name} All rights reserved.</p>
         </div>
       </div>
     </footer>

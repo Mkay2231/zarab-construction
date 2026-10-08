@@ -1,38 +1,39 @@
-// Company information. Every value in [BRACKETS] is a placeholder —
-// replace only with information approved by Zarab Construction Company Ltd.
+// Transcribed and adapted from the company profile supplied on 8 October 2026.
+// See CONTENT_SOURCES.md for provenance and information still required.
 export const company = {
   name: 'Zarab Construction Company Ltd.',
+  legalName: 'Zarab Construction Ltd',
   shortName: 'Zarab',
-  profile: '[Approved company profile will be inserted here.]',
-  phone: '[PHONE NUMBER]',
+  incorporated: '26 June 2008',
+  registrationNumber: 'RC 756052',
+  profile: 'Incorporated in 2008, Zarab Construction Company Ltd. provides building construction and civil engineering services to the public and private sectors in Nigeria. Our work spans roads, bridges, buildings, water resources and related infrastructure, supported by a multidisciplinary team and construction equipment.',
+  phone: '08035603966',
   phoneSecondary: '[SECONDARY PHONE NUMBER]',
-  email: '[EMAIL ADDRESS]',
-  address: '[OFFICE ADDRESS]',
-  region: '[CITY, STATE / REGION]',
+  email: 'ybadmus43@yahoo.com',
+  emailSecondary: 'obasa2009@yahoo.com',
+  address: '23 Kolaq Bus Stop, Ishashi',
+  region: 'Ishashi',
   hours: '[BUSINESS HOURS]',
   weekendHours: '[WEEKEND AVAILABILITY]',
-  // Set to an approved number to show WhatsApp in the form and contact methods.
   whatsapp: null,
-  // Real links are added only when approved; null keeps them as non-link placeholders.
   social: [
     { label: '[LINKEDIN]', href: null },
     { label: '[INSTAGRAM]', href: null },
     { label: '[FACEBOOK]', href: null },
     { label: '[OTHER APPROVED CHANNEL]', href: null },
   ],
-  // Map embed URL (Google Maps / Mapbox / OpenStreetMap) once the office address is approved.
   mapEmbedUrl: null,
   directionsUrl: null,
 };
 
-/** True when a value is still an unapproved placeholder like "[PHONE NUMBER]". */
 export const isPlaceholder = (value) => !value || /^\[.*\]$/.test(String(value).trim());
 
+// Profile facts, not claims about current headcount or completed projects.
 export const stats = [
-  { value: '[XX]+', label: 'Projects' },
-  { value: '[XX]+', label: 'Years Experience' },
-  { value: '[XX]', label: 'Team Members' },
-  { value: '[XX]', label: 'Locations' },
+  { value: '2008', label: 'Year Incorporated' },
+  { value: 'RC 756052', label: 'Company Registration' },
+  { value: '12', label: 'Technical Staff Listed in Profile' },
+  { value: '4', label: 'Administrative Staff Listed in Profile' },
 ];
 
 export const navLinks = [
