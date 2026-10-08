@@ -30,8 +30,12 @@ Content was transcribed from 13 photographs supplied by the owner on 8 October 2
 
 ## Still required
 
-- Phone numbers, office address, city/region, opening hours, WhatsApp and social links.
+- Secondary phone number, full city/state confirmation, opening hours, WhatsApp and social links.
 - Project names, clients, dates, locations, status, descriptions, outcomes and photographs; no project records appear in these pages.
 - Staff portraits and project/company imagery with captions.
 - Any additional certifications or current memberships require supporting information.
 - Contact form delivery remains a separate hosting configuration task; email links do not configure form delivery.
+
+## Owner-supplied contact update
+
+On 8 October 2026, the owner supplied phone number 08035603966 and office details “23 Kolaq Busstop ishashi”. The website displays the address as “23 Kolaq Bus Stop, Ishashi”. No state, map coordinates or WhatsApp account has been inferred.

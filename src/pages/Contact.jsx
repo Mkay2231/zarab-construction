@@ -81,7 +81,7 @@ export default function Contact() {
       {/* 06.2 Contact Information */}
       <section id="contact-information" className="section section--white" aria-labelledby="info-title">
         <div className="container">
-          <SectionHead id="info-title" label="Contact information" title="We're ready to hear from you." note="Email addresses are supplied in the company profile. Phone, office location and opening hours are still to be confirmed." />
+          <SectionHead id="info-title" label="Contact information" title="We're ready to hear from you." note="Contact us by phone or email to discuss your project or arrange an office visit." />
           <Stagger className="contact-info">
             <InfoItem icon="phone" label="Phone" value={company.phone} secondary={company.phoneSecondary} action="Call Us" href={tel} />
             <InfoItem icon="mail" label="Email" value={company.email} action="Send Email" href={mailto} />
