@@ -2,6 +2,11 @@
 .team-card__body { display: grid; gap: var(--space-8); }
 .team-card__name { transition: color var(--dur-base) var(--ease-out); }
 .team-card:hover .team-card__name { color: var(--color-green); }
+@media (min-width: 768px) {
+  .team-card__name, .team-card__name + p,
+  .leader-card:not(.leader-card--primary) .leader-card__name,
+  .leader-card:not(.leader-card--primary) .leader-card__name + p { min-height: 2lh; }
+}
 .team-card__link { display: inline-flex; align-items: center; gap: var(--space-8); min-height: 44px; font-weight: 500; color: var(--color-green); }
 
 .team-grid { display: grid; gap: var(--space-48) var(--grid-gap); }
