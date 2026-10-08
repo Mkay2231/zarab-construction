@@ -27,7 +27,7 @@ export default function Footer() {
             <div>
               <h2 className="t-label muted site-footer__title">Contact</h2>
               <ul className="site-footer__list">
-                <li>{company.phone}</li>
+                <li><a href={`tel:${company.phone.replace(/\s+/g, '')}`} className="site-footer__link">{company.phone}</a></li>
                 <li><a href={`mailto:${company.email}`} className="site-footer__link">{company.email}</a></li>
                 <li><a href={`mailto:${company.emailSecondary}`} className="site-footer__link">{company.emailSecondary}</a></li>
                 <li>{company.address}</li>

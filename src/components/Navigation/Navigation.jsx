@@ -6,6 +6,7 @@ import Icon from '../Common/Icon';
 import Button from '../Buttons/Button';
 import { ease } from '../Common/Motion';
 import { company, navLinks } from '../../data/company';
+import { scrollToSection } from '../../hooks/useSections';
 import './Navigation.css';
 
 const mobileLinks = [...navLinks, { to: '/contact', label: 'Contact' }];
@@ -50,6 +51,13 @@ export default function Navigation() {
   }, [open]);
 
   const isContact = pathname === '/contact';
+  const handleContactClick = (event) => {
+    setOpen(false);
+    if (isContact && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) {
+      event.preventDefault();
+      scrollToSection('contact-form');
+    }
+  };
 
   return (
     <motion.header
@@ -86,6 +94,7 @@ export default function Navigation() {
           variant="primary"
           className={`site-header__cta ${isContact ? 'is-current' : ''}`}
           aria-current={isContact ? 'page' : undefined}
+          onClick={handleContactClick}
         >
           Contact Us
         </Button>
@@ -127,7 +136,7 @@ export default function Navigation() {
               >
                 {mobileLinks.map((link) => (
                   <motion.li key={link.to} variants={{ hidden: { opacity: 0, y: 12 }, show: { opacity: 1, y: 0 } }} transition={{ duration: 0.4, ease }}>
-                    <NavLink to={link.to} end={link.to === '/'} className="mobile-menu__link nudge-host">
+                    <NavLink to={link.to} end={link.to === '/'} className="mobile-menu__link nudge-host" onClick={link.to === '/contact' ? handleContactClick : () => setOpen(false)}>
                       <span className="t-h2">{link.label}</span>
                       <Icon name="arrowRight" className="nudge-arrow" />
                     </NavLink>
@@ -136,7 +145,7 @@ export default function Navigation() {
               </motion.ul>
             </nav>
             <div className="mobile-menu__footer">
-              <Button to="/contact" variant="primary" full icon="arrow">Contact Us</Button>
+              <Button to="/contact" variant="primary" full icon="arrow" onClick={handleContactClick}>Contact Us</Button>
               <p className="t-caption muted">{company.phone} · {company.email}</p>
             </div>
           </motion.div>

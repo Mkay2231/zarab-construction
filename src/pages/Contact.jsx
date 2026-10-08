@@ -14,7 +14,7 @@ import './pages.css';
 // Real tel:/mailto:/directions links are only created once approved details exist.
 const tel = isPlaceholder(company.phone) ? null : `tel:${company.phone.replace(/\s+/g, '')}`;
 const mailto = isPlaceholder(company.email) ? null : `mailto:${company.email}`;
-const directions = company.directionsUrl;
+const directions = company.directionsUrl || (isPlaceholder(company.address) ? null : `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(company.address)}`);
 
 function Action({ href, children }) {
   if (!href) {
@@ -146,9 +146,9 @@ export default function Contact() {
                   : <Button variant="secondary" icon="location" disabled title="Available once the approved office address is added">Get Directions</Button>}
               </div>
               <ul className="method-list">
-                <Method icon="phone" label="Call" value={company.phone} />
-                <Method icon="mail" label="Email" value={company.email} />
-                <Method icon="location" label="Directions" value={company.address} />
+                <Method icon="phone" label="Call" value={company.phone} href={tel} action="Call" />
+                <Method icon="mail" label="Email" value={company.email} href={mailto} action="Email" />
+                <Method icon="location" label="Directions" value={company.address} href={directions} action="Directions" />
                 {company.whatsapp && <Method icon="phone" label="WhatsApp" value={company.whatsapp} href={`https://wa.me/${company.whatsapp.replace(/\D/g, '')}`} action="Message" />}
               </ul>
             </Reveal>
