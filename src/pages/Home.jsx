@@ -1,4 +1,3 @@
-import { useNavigate } from 'react-router-dom';
 import Seo from '../components/Common/Seo';
 import SectionLabel from '../components/Common/SectionLabel';
 import SectionHead from '../components/Common/SectionHead';
@@ -8,19 +7,17 @@ import CTA from '../components/Common/CTA';
 import Button from '../components/Buttons/Button';
 import { HeroItem, Reveal, Stagger, RevealItem } from '../components/Common/Motion';
 import { ServiceCard } from '../components/ServiceCard/ServiceCard';
-import ProjectCard from '../components/ProjectCard/ProjectCard';
 import { TeamCard } from '../components/TeamCard/TeamCard';
 import Icon from '../components/Common/Icon';
 import { company, stats } from '../data/company';
 import { services } from '../data/services';
-import { projects, featuredProject } from '../data/projects';
+import { workPhotos, sitePhotos } from '../data/photography';
 import { team } from '../data/team';
 import { principles } from '../data/about';
 import './pages.css';
 
 export default function Home() {
-  const navigate = useNavigate();
-  const openProjects = () => navigate('/projects#projects-all');
+
 
   return (
     <>
@@ -44,7 +41,7 @@ export default function Home() {
             </HeroItem>
             <HeroItem step="actions" className="home-hero__actions">
               <Button to="/services" variant="primary" icon="arrow">Explore Our Services</Button>
-              <Button to="/projects" variant="secondary">View Our Projects</Button>
+              <Button to="/projects" variant="secondary">View Our Work</Button>
             </HeroItem>
           </div>
           <HeroItem as="ul" step="actions" className="home-hero__disciplines" aria-label="Disciplines">
@@ -52,7 +49,7 @@ export default function Home() {
           </HeroItem>
         </div>
         <HeroItem step="image" className="home-hero__media">
-          <Media fill priority label="[PROJECT IMAGE]" note="Awaiting approved Zarab project photography" />
+          <Media fill priority {...sitePhotos.hero} />
           <span className="home-hero__accent" aria-hidden="true" />
         </HeroItem>
       </section>
@@ -90,34 +87,18 @@ export default function Home() {
       <section className="section section--white" aria-labelledby="projects-preview-title">
         <div className="container">
           <div className="head-row">
-            <SectionHead id="projects-preview-title" label="Selected projects" title="Infrastructure that speaks for itself." />
-            <Reveal className="head-row__link"><Button to="/projects" variant="text" icon="arrow">View All Projects</Button></Reveal>
+            <SectionHead id="projects-preview-title" label="Our work" title="Infrastructure that speaks for itself." />
+            <Reveal className="head-row__link"><Button to="/projects" variant="text" icon="arrow">Explore the Gallery</Button></Reveal>
           </div>
-          <article className="feature zoom-host nudge-host">
-            <Reveal type="image" className="feature__media zoom-media">
-              <Media ratio="3 / 2" label="[PROJECT IMAGE]" note="Awaiting approved Zarab project photography" />
-            </Reveal>
-            <Reveal delay={0.1} className="feature__panel">
-              <div className="feature__head">
-                <p className="t-label green">Project 01</p>
-                <Icon name="arrowUpRight" className="nudge-arrow nudge-arrow--up" />
-              </div>
-              <h3 className="t-h2">{featuredProject.name}</h3>
-              <dl className="meta">
-                <div><dt>Location</dt><dd>{featuredProject.location}</dd></div>
-                <div><dt>Project type</dt><dd>[Project Type]</dd></div>
-                <div><dt>Status</dt><dd>[Project Status]</dd></div>
-              </dl>
-              <Button to="/projects#projects-featured" variant="text" icon="arrow">View Project</Button>
-            </Reveal>
-          </article>
-          <Stagger className="project-grid project-grid--preview">
-            {projects.slice(0, 3).map((p) => (
-              <RevealItem key={p.id}>
-                <ProjectCard project={{ ...p, category: null }} showDescription={false} onView={openProjects} />
-              </RevealItem>
+          <Reveal type="image"><Media ratio="16 / 7" {...sitePhotos.bridge} /></Reveal>
+          <div className="work-preview">
+            {workPhotos.slice(1, 4).map((photo) => (
+              <Reveal key={photo.id} as="figure">
+                <a href="/projects#work-gallery" className="zoom-host"><div className="zoom-media"><Media src={photo.src} alt={photo.alt} ratio="4 / 5" /></div></a>
+                <figcaption className="t-body-s">{photo.caption}</figcaption>
+              </Reveal>
             ))}
-          </Stagger>
+          </div>
         </div>
       </section>
 
@@ -169,3 +150,4 @@ export default function Home() {
     </>
   );
 }
+

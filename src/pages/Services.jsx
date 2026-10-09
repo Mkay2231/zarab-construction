@@ -1,3 +1,4 @@
+import { sitePhotos } from '../data/photography';
 import Seo from '../components/Common/Seo';
 import PageHero from '../components/Common/PageHero';
 import SectionLabel from '../components/Common/SectionLabel';
@@ -65,7 +66,7 @@ export default function Services() {
             <Button to="/projects" variant="secondary">View Our Projects</Button>
           </>
         }
-        media={{ label: '[CONSTRUCTION / ENGINEERING IMAGE]', note: 'Awaiting approved Zarab photography' }}
+        media={sitePhotos.hero}
       />
 
       {/* 03.2 Services Overview */}
@@ -85,7 +86,7 @@ export default function Services() {
       {/* 03.3 Road Construction — image left */}
       <section id={road.id} className="section section--bg" aria-labelledby="road-title">
         <div className="container svc svc--image-left">
-          <Reveal type="image" className="svc__media zoom-host"><div className="zoom-media"><Media ratio="4 / 5" label={road.imageLabel} /></div></Reveal>
+          <Reveal type="image" className="svc__media zoom-host"><div className="zoom-media"><Media ratio="4 / 5" {...sitePhotos.road} /></div></Reveal>
           <Reveal className="svc__content">
             <SectionLabel>{`${road.number} / ${road.title}`}</SectionLabel>
             <h2 id="road-title" className="svc__heading t-display-m">{road.title}</h2>
@@ -100,7 +101,7 @@ export default function Services() {
       {/* 03.4 Bridge Construction — wide image + split */}
       <section id={bridge.id} className="section section--white" aria-labelledby="bridge-title">
         <div className="container">
-          <Reveal type="image"><Media ratio="21 / 9" label={bridge.imageLabel} /></Reveal>
+          <Reveal type="image"><Media ratio="21 / 9" {...sitePhotos.bridge} /></Reveal>
           <div className="svc svc--wide-split" style={{ marginTop: 'var(--space-64)' }}>
             <Reveal className="svc__content">
               <SectionLabel>{`${bridge.number} / ${bridge.title}`}</SectionLabel>
@@ -122,7 +123,7 @@ export default function Services() {
       {/* 03.5 Civil Engineering — dark, image right */}
       <section id={civil.id} className="section section--ink on-dark" aria-labelledby="civil-title">
         <div className="container svc svc--image-right">
-          <Reveal type="image" className="svc__media"><Media ratio="4 / 5" label={civil.imageLabel} /></Reveal>
+          <Reveal type="image" className="svc__media"><Media ratio="4 / 5" {...sitePhotos.civil} /></Reveal>
           <Reveal className="svc__content">
             <SectionLabel theme="dark">{`${civil.number} / ${civil.title}`}</SectionLabel>
             <h2 id="civil-title" className="svc__heading t-display-m">{civil.title}</h2>

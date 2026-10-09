@@ -1,3 +1,4 @@
+import { sitePhotos } from '../data/photography';
 import Seo from '../components/Common/Seo';
 import PageHero from '../components/Common/PageHero';
 import SectionHead from '../components/Common/SectionHead';
@@ -75,7 +76,7 @@ export default function Contact() {
           </>
         }
         extra={<p className="t-body-s muted" style={{ display: 'flex', gap: 8, alignItems: 'center' }}><Icon name="phone" size={16} />{company.phone}</p>}
-        media={{ label: '[CONTACT / ENGINEERING IMAGE]', note: 'Awaiting approved Zarab photography' }}
+        media={sitePhotos.reinforcement}
       />
 
       {/* 06.2 Contact Information */}
