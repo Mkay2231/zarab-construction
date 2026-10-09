@@ -5,6 +5,7 @@ import { company, navLinks, isPlaceholder } from '../../data/company';
 import './Footer.css';
 
 const footerNav = [...navLinks, { to: '/contact', label: 'Contact' }];
+const socialLinks = company.social.filter((s) => s.href && !isPlaceholder(s.href));
 
 /** One footer, shared by every page. */
 export default function Footer() {
@@ -15,7 +16,7 @@ export default function Footer() {
           <div className="site-footer__brand">
             <Logo theme="dark" />
           </div>
-          <div className="site-footer__cols">
+          <div className={`site-footer__cols ${socialLinks.length ? '' : 'site-footer__cols--without-social'}`}>
             <nav aria-label="Footer">
               <h2 className="t-label muted site-footer__title">Navigation</h2>
               <ul className="site-footer__list site-footer__list--nav">
@@ -34,20 +35,16 @@ export default function Footer() {
                 <li>{company.address}</li>
               </ul>
             </div>
-            <div>
+            {socialLinks.length > 0 && <div>
               <h2 className="t-label muted site-footer__title">Follow</h2>
               <ul className="site-footer__list">
-                {company.social.slice(0, 3).map((s) => (
+                {socialLinks.map((s) => (
                   <li key={s.label}>
-                    {s.href && !isPlaceholder(s.href) ? (
-                      <a href={s.href} className="site-footer__link" target="_blank" rel="noopener noreferrer">{s.label}</a>
-                    ) : (
-                      <span>{s.label}</span>
-                    )}
+                    <a href={s.href} className="site-footer__link" target="_blank" rel="noopener noreferrer">{s.label}</a>
                   </li>
                 ))}
               </ul>
-            </div>
+            </div>}
           </div>
         </Reveal>
         <div className="site-footer__bottom">
