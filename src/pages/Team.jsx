@@ -1,3 +1,4 @@
+import { sitePhotos } from '../data/photography';
 import { useMemo, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import Seo from '../components/Common/Seo';
@@ -54,7 +55,7 @@ export default function Team() {
             <Button to="/services" variant="secondary">Explore Our Services</Button>
           </>
         }
-        media={{ label: '[TEAM / ENGINEERING IMAGE]', note: 'Awaiting approved Zarab team photography' }}
+        media={sitePhotos.team}
       />
 
       {/* 05.2 Leadership */}

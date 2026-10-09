@@ -1,3 +1,4 @@
+import { sitePhotos } from '../data/photography';
 import Seo from '../components/Common/Seo';
 import Breadcrumb from '../components/Common/Breadcrumb';
 import SectionLabel from '../components/Common/SectionLabel';
@@ -50,7 +51,7 @@ export default function About() {
           </div>
           <HeroItem step="image" className="about-hero__media">
             <span className="accent-bar" aria-hidden="true" />
-            <Media ratio="16 / 7.5" priority label="[COMPANY / PROJECT IMAGE]" note="Awaiting approved Zarab photography" />
+            <Media ratio="16 / 7.5" priority {...sitePhotos.bridge} />
           </HeroItem>
         </div>
       </section>
@@ -152,11 +153,11 @@ export default function About() {
       {/* 02.8 Company Image */}
       <section className="section--white full-bleed" aria-label="Company photograph">
         <Reveal type="image">
-          <Media ratio="2 / 1" label="[COMPANY / TEAM / PROJECT PHOTOGRAPH]" note="Awaiting approved Zarab photography" />
+          <Media ratio="2 / 1" {...sitePhotos.team} />
         </Reveal>
         <div className="container fig-caption">
           <span className="t-label fig-caption__index">Fig. 01</span>
-          <span className="t-caption placeholder">[Image caption / project context]</span>
+          <span className="t-caption placeholder">Zarab site team working on bridge construction.</span>
         </div>
         <div style={{ height: 'var(--section-pad)' }} />
       </section>
