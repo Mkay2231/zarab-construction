@@ -17,6 +17,7 @@ const tel = isPlaceholder(company.phone) ? null : `tel:${company.phone.replace(/
 const telSecondary = `tel:${company.phoneSecondary.replace(/\s+/g, '')}`;
 const mailto = isPlaceholder(company.email) ? null : `mailto:${company.email}`;
 const directions = company.directionsUrl || (isPlaceholder(company.address) ? null : `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(company.address)}`);
+const socialLinks = company.social.filter((s) => s.href && !isPlaceholder(s.href));
 
 function Action({ href, children }) {
   if (!href) {
@@ -91,17 +92,12 @@ export default function Contact() {
             <InfoItem icon="location" label="Office" value={company.address} secondary={company.region} action="Get Directions" href={directions} />
             <InfoItem icon="clock" label="Business Hours" value={company.hours} secondary={company.weekendHours} />
           </Stagger>
-          <Reveal className="online">
+          {socialLinks.length > 0 && <Reveal className="online">
             <p className="t-label muted">Online</p>
-            {company.social.map((s) => (
-              s.href ? (
+            {socialLinks.map((s) => (
                 <a key={s.label} href={s.href} className="online__link" target="_blank" rel="noopener noreferrer">{s.label}<Icon name="link" size={16} /></a>
-              ) : (
-                <span key={s.label} className="online__link">{s.label}<Icon name="link" size={16} /></span>
-              )
             ))}
-            <p className="t-caption muted online__note">Show only approved profiles.</p>
-          </Reveal>
+          </Reveal>}
         </div>
       </section>
 
