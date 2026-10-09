@@ -152,7 +152,7 @@ export default function Services() {
             </Reveal>
             <Reveal delay={0.1} className="split__body"><p className="t-body-l placeholder">{infra.description}</p></Reveal>
           </div>
-          <Reveal type="image"><Media ratio="16 / 9" label={infra.imageLabel} /></Reveal>
+          <Reveal type="image"><Media ratio="16 / 9" {...sitePhotos.team} /></Reveal>
           <Stagger className="blocks" style={{ marginTop: 'var(--space-48)' }}>
             {infra.blocks.map((b) => (
               <RevealItem key={b.title} className="blocks__item">
