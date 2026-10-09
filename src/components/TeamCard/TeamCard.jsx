@@ -2,8 +2,6 @@ import Media from '../Common/Media';
 import Icon from '../Common/Icon';
 import './TeamCard.css';
 
-const portrait = { label: '[PROFILE PHOTO]', note: 'Awaiting approved team photography' };
-
 /**
  * Team directory card. Structural placeholder until Zarab supplies approved people.
  * "View Profile" renders only when a real profile URL exists — never a fake destination.
@@ -11,7 +9,7 @@ const portrait = { label: '[PROFILE PHOTO]', note: 'Awaiting approved team photo
 export function TeamCard({ member, showDepartment = true, showBio = true }) {
   return (
     <article className="team-card zoom-host">
-      <div className="zoom-media"><Media ratio="4 / 5" src={member.photo} alt={member.photo ? member.name : ''} {...portrait} /></div>
+      {member.photo && <div className="zoom-media"><Media ratio="4 / 5" src={member.photo} alt={member.name} /></div>}
       <div className="team-card__body">
         {showDepartment && <p className="t-label green">{member.department ?? '[DEPARTMENT]'}</p>}
         <h3 className="t-h3 team-card__name">{member.name}</h3>
@@ -32,8 +30,8 @@ export function TeamCard({ member, showDepartment = true, showBio = true }) {
 /** Leadership profile — `primary` is the large editorial layout. */
 export function LeadershipCard({ member, primary = false }) {
   return (
-    <article className={`leader-card zoom-host ${primary ? 'leader-card--primary' : ''}`}>
-      <div className="zoom-media leader-card__media"><Media ratio="4 / 5" src={member.photo} alt={member.photo ? member.name : ''} {...portrait} /></div>
+    <article className={`leader-card zoom-host ${primary ? 'leader-card--primary' : ''} ${member.photo ? 'leader-card--with-photo' : ''}`}>
+      {member.photo && <div className="zoom-media leader-card__media"><Media ratio="4 / 5" src={member.photo} alt={member.name} /></div>}
       <div className="leader-card__body">
         {primary && (
           <p className="leader-card__tag t-label"><span aria-hidden="true" className="leader-card__marker" />Leadership</p>

@@ -8,7 +8,7 @@ export const company = {
   registrationNumber: 'RC 756052',
   profile: 'Incorporated in 2008, Zarab Construction Company Ltd. provides building construction and civil engineering services to the public and private sectors in Nigeria. Our work spans roads, bridges, buildings, water resources and related infrastructure, supported by a multidisciplinary team and construction equipment.',
   phone: '08035603966',
-  phoneSecondary: '[SECONDARY PHONE NUMBER]',
+  phoneSecondary: '08037200170',
   email: 'ybadmus43@yahoo.com',
   emailSecondary: 'obasa2009@yahoo.com',
   address: '23 Kolaq Bus Stop, Ishashi',
@@ -22,8 +22,8 @@ export const company = {
     { label: '[FACEBOOK]', href: null },
     { label: '[OTHER APPROVED CHANNEL]', href: null },
   ],
-  mapEmbedUrl: null,
-  directionsUrl: null,
+  mapEmbedUrl: 'https://www.google.com/maps?q=23%20Kolaq%20Bus%20Stop%2C%20Ishashi%2C%20Nigeria&output=embed',
+  directionsUrl: 'https://www.google.com/maps/dir/?api=1&destination=23%20Kolaq%20Bus%20Stop%2C%20Ishashi%2C%20Nigeria',
 };
 
 export const isPlaceholder = (value) => !value || /^\[.*\]$/.test(String(value).trim());
