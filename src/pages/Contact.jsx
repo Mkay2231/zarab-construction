@@ -14,6 +14,7 @@ import './pages.css';
 
 // Real tel:/mailto:/directions links are only created once approved details exist.
 const tel = isPlaceholder(company.phone) ? null : `tel:${company.phone.replace(/\s+/g, '')}`;
+const telSecondary = `tel:${company.phoneSecondary.replace(/\s+/g, '')}`;
 const mailto = isPlaceholder(company.email) ? null : `mailto:${company.email}`;
 const directions = company.directionsUrl || (isPlaceholder(company.address) ? null : `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(company.address)}`);
 
@@ -21,7 +22,8 @@ function Action({ href, children }) {
   if (!href) {
     return <span className="method__action" aria-disabled="true" title="Available once approved contact details are added">{children}</span>;
   }
-  return <a href={href} className="method__action nudge-host">{children}<Icon name="arrowRight" size={20} className="nudge-arrow" /></a>;
+  const external = href.startsWith('https://');
+  return <a href={href} className="method__action nudge-host" target={external ? '_blank' : undefined} rel={external ? 'noopener noreferrer' : undefined}>{children}<Icon name="arrowRight" size={20} className="nudge-arrow" /></a>;
 }
 
 function InfoItem({ icon, label, value, secondary, action, href }) {
@@ -75,7 +77,7 @@ export default function Contact() {
             <Button variant="secondary" icon="phone" href={tel ?? '#contact-information'}>Call Zarab</Button>
           </>
         }
-        extra={<p className="t-body-s muted" style={{ display: 'flex', gap: 8, alignItems: 'center' }}><Icon name="phone" size={16} />{company.phone}</p>}
+        extra={<p className="t-body-s muted" style={{ display: 'flex', flexWrap: 'wrap', gap: 8, alignItems: 'center' }}><Icon name="phone" size={16} /><a href={tel}>{company.phone}</a><span aria-hidden="true">/</span><a href={telSecondary}>{company.phoneSecondary}</a></p>}
         media={sitePhotos.reinforcement}
       />
 
@@ -84,7 +86,7 @@ export default function Contact() {
         <div className="container">
           <SectionHead id="info-title" label="Contact information" title="We're ready to hear from you." note="Contact us by phone or email to discuss your project or arrange an office visit." />
           <Stagger className="contact-info">
-            <InfoItem icon="phone" label="Phone" value={company.phone} secondary={company.phoneSecondary} action="Call Us" href={tel} />
+            <InfoItem icon="phone" label="Phone" value={<a href={tel}>{company.phone}</a>} secondary={<a href={telSecondary}>{company.phoneSecondary}</a>} action="Call Us" href={tel} />
             <InfoItem icon="mail" label="Email" value={company.email} secondary={<a href={`mailto:${company.emailSecondary}`}>{company.emailSecondary}</a>} action="Send Email" href={mailto} />
             <InfoItem icon="location" label="Office" value={company.address} secondary={company.region} action="Get Directions" href={directions} />
             <InfoItem icon="clock" label="Business Hours" value={company.hours} secondary={company.weekendHours} />
@@ -114,6 +116,7 @@ export default function Contact() {
               <h3 className="t-h3">Speak to the Zarab team directly.</h3>
               <ul className="method-list">
                 <Method icon="phone" label="Phone" value={company.phone} href={tel} action="Call" />
+                <Method icon="phone" label="Alternative Phone" value={company.phoneSecondary} href={telSecondary} action="Call" />
                 <Method icon="mail" label="Email" value={company.email} href={mailto} action="Email" />
                 <Method icon="mail" label="Alternative Email" value={company.emailSecondary} href={`mailto:${company.emailSecondary}`} action="Email" />
               </ul>
@@ -148,6 +151,7 @@ export default function Contact() {
               </div>
               <ul className="method-list">
                 <Method icon="phone" label="Call" value={company.phone} href={tel} action="Call" />
+                <Method icon="phone" label="Alternative Phone" value={company.phoneSecondary} href={telSecondary} action="Call" />
                 <Method icon="mail" label="Email" value={company.email} href={mailto} action="Email" />
                 <Method icon="location" label="Directions" value={company.address} href={directions} action="Directions" />
                 {company.whatsapp && <Method icon="phone" label="WhatsApp" value={company.whatsapp} href={`https://wa.me/${company.whatsapp.replace(/\D/g, '')}`} action="Message" />}
